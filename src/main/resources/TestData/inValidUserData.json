@@ -1,0 +1,9 @@
+{
+  "wrong_username":"test",
+  "correct_password":"secret_sauce",
+  "correct_username": "standard_user",
+  "wrong_password": "test",
+  "empty_first_name": "",
+  "empty_last_name": "",
+  "empty_zip_code": ""
+}
