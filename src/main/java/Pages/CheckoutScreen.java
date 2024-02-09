@@ -13,6 +13,11 @@ public class CheckoutScreen {
     private final By confirmationOrderMessage = By.xpath("//div[@id='checkout_complete_container']/h2");
     ////*[@id="checkout_complete_container"]/h2
 
+    private final By cancelButton = By.id("cancel");
+
+    private final By sauceLabsBikeLightProductPrice = By.xpath("(//div[@class='inventory_item_price'])[2]");
+    private final By sauceLabsBackpackProductPrice = By.xpath("(//div[@class='inventory_item_price'])[1]");
+
     public CheckoutScreen(WebDriver driver) {
         this.driver = driver;
     }
@@ -31,8 +36,30 @@ public class CheckoutScreen {
         return driver.getCurrentUrl().equals(expectedValue) ;
     }
 
+    public HomeScreen clickOnCancelButton(){
+        Utilities.clickOnButton(driver,cancelButton);
+        return new HomeScreen(driver);
+    }
+    public String getSauceLabsBikeLightProductPrice()
+    {
+        return Utilities.getText(driver,sauceLabsBikeLightProductPrice);
+    }
+
+    public String getSauceLabsBackpackProductPrice()
+    {
+        return Utilities.getText(driver,sauceLabsBackpackProductPrice);
+    }
+
+    public double getItemsTotal() {
+       return Utilities.getSum(getSauceLabsBikeLightProductPrice(), getSauceLabsBackpackProductPrice());
+    }
 
 
+    public boolean verifyTotalItemsPrice(){
+        return Utilities.getText(driver,itemTotalPrice).equals(getItemsTotal());
+    }
 
-
+    public String get(){
+       return Utilities.getText(driver,itemTotalPrice);
+    }
 }

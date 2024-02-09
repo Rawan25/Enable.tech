@@ -26,7 +26,7 @@ public class CartTestCases {
                 .implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @Test(priority = 1, description = "Verify that ")
+    @Test(priority = 1, description = "Verify that Continue button navigates to Checkout screen")
     public void validCheckoutInformation() throws IOException {
         new LoginScreen(getDriver()).loginSteps(Utilities.getJsonData("validUserData","username")
                         ,Utilities.getJsonData("validUserData","password"))
@@ -60,7 +60,7 @@ public class CartTestCases {
 
     }
 
-    @Test(priority = 3,description = "")
+    @Test(priority = 3,description = "Verify that Cancel button returns to Cart screen")
     public void returnToHomeScreen() throws IOException {
 
         new LoginScreen(getDriver()).loginSteps(Utilities.getJsonData("validUserData","username")
@@ -77,7 +77,6 @@ public class CartTestCases {
                 Utilities.getPropertyValue("CartPageURL")));
 
     }
-
 
     @AfterMethod
     public void quit()

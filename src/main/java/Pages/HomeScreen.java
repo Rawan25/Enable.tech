@@ -60,5 +60,10 @@ public class HomeScreen {
         return new CartScreen(driver);
     }
 
+    public Boolean assertHomeScreen(String expectedValue)
+    {
+        return driver.getCurrentUrl().equals(expectedValue) ;
+    }
+
 
 }

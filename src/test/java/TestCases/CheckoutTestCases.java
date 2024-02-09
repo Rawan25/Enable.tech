@@ -1,6 +1,5 @@
 package TestCases;
 
-import Pages.CartScreen;
 import Pages.CheckoutScreen;
 import Pages.HomeScreen;
 import Pages.LoginScreen;
@@ -8,12 +7,14 @@ import Utilities.Utilities;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 import java.time.Duration;
-
+import Listeners.IInvokedMethodListenerClass;
 import static DriverManager.DriverManager.*;
+
+@Listeners(IInvokedMethodListenerClass.class)
 
 public class CheckoutTestCases {
 
@@ -29,8 +30,8 @@ public class CheckoutTestCases {
                 .implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @Test(priority = 1)
-    public void totalPriceIsCorrect(){
+    @Test(priority = 1 , description = "the total items price test case should fail")
+    public void totalPriceIsCorrect() {
         new LoginScreen(getDriver()).loginSteps(Utilities.getJsonData("validUserData","username")
                         ,Utilities.getJsonData("validUserData","password"))
                 .clickOnAddToCartButtonForSauceLabsBikeLightProduct()
@@ -41,10 +42,7 @@ public class CheckoutTestCases {
                 .setPostalCode(Utilities.getJsonData("validUserData","zip_code"))
                 .clickOnContinueButton();
 
-        System.out.println(new CheckoutScreen(getDriver()).getItemsTotal());
-        System.out.println(new CheckoutScreen(getDriver()).get());
-
-        //Assert.assertTrue(new CheckoutScreen(getDriver()).verifyTotalItemsPrice());
+        Assert.assertTrue(new CheckoutScreen(getDriver()).verifyTotalItemsPrice());
 
     }
 
@@ -79,7 +77,6 @@ public class CheckoutTestCases {
         Assert.assertTrue(new HomeScreen(getDriver()).assertHomeScreen(Utilities.getPropertyValue("HomePageUrl")));
 
     }
-
 
 
     @AfterMethod
