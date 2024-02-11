@@ -11,6 +11,12 @@ Overall, the project aimed to ensure the functionality, usability, and reliabili
 
 
 ## Demo for Parallel execution
+
+
+https://github.com/Rawan25/Enable.tech/assets/45521410/4c212b35-a376-46c3-90a4-1cfcefa82838
+
+
+
 ## Key Features
 
 Thread Management with DriverManager: The automation code includes a DriverManager file responsible for controlling the threads of the drivers. This feature ensures efficient utilization of resources by managing the lifecycle of driver instances, including initialization, usage, and cleanup, thereby optimizing test execution.
